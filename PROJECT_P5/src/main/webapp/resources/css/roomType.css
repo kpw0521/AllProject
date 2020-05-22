@@ -1,0 +1,296 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 90%;
+	max-width: 1100px;
+	display: inline;
+}
+
+/* 컨텐츠 */
+#container {
+	display: inline;
+	float: left;
+	width: 60%;
+	height: 710px;
+	padding-bottom: 102px;
+	margin-left: 5%;
+}
+
+/* 왼쪽 공간  */
+#left {
+	display: inline;
+	width: 30%;
+	height: 1250px;
+	background-color: #FAFAFA;
+	float: right;
+}
+
+
+header img {
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+h5 {
+	display: inline;
+	margin-left: 30px;
+}
+
+h2 {
+	color: #6E6E6E;
+	font-size: 20px;
+}
+/*진행바  */
+progress {
+	width: 100%;
+	-webkit-appearance: none;
+	border: 1px solid;
+	border-radius: 100px;
+	background: white;
+}
+
+progress::-webkit-progress-bar-value {
+	-webkit-appearance: none;
+	background: orangered;
+}
+
+progress {
+	color: lightblue;
+}
+
+progress::-webkit-progress-value {
+	background: white;
+}
+
+progress::-moz-progress-bar {
+	background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+	background: #008489;
+	border-radius: 100px;
+}
+
+progress::-webkit-progress-bar {
+	background: white;
+}
+
+/* 숙소종류나 유형 선택  */
+select {
+	width: 380px;
+	height: 80px;
+	font-size: 20px;
+	outline-style: none;
+}
+
+select:focus {
+	outline: 1px solid #008489;
+}
+/*셀렉트 화살표 이미지로 대체*/
+select {
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	background: url(../img/downArrow.png) no-repeat 95% 50%;
+	/* 화살표 모양의 이미지 */
+	background-size: 30px;
+	border-color: #E8E8E8;
+}
+
+
+
+/* 등록,수정 버튼 모음  */
+.room-type-btn-group {
+	display: flex;
+    margin-top: 10px;
+    padding: 10px 0px;
+    width: 362px;
+    justify-content: space-between;
+    flex-wrap: wrap;	
+}
+
+/*이전 다음버튼  */
+.registration {
+	display: inline-block;
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 20px;
+}
+
+/* 이전 버튼 */
+#reset-info {
+    display: inline;
+    vertical-align: middle;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #008489;
+    outline: none;
+    border: none;
+    background: white;
+    padding-top: 10px;
+}
+
+/* 다음버튼 */
+#nextBtn {
+	display: inline;
+    width: 75px;;
+    background: #008489;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+
+/* span.previous {
+	position: relative;
+	color: #008489;
+	margin-left: 30px;
+} */
+/* 이전눌렀을때 모달창 */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 568px;
+	height: 298px;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.reset-title {
+	color: #484848;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.reset {
+	background-color: white;
+	color: #008489;
+	border: 3px solid #008489;
+	width: 198px;
+	height: 48px;
+	font-weight: bold;
+}
+/*미디어 쿼리  */
+@media ( max-width : 768px) {
+	#wrap {
+		width: 768px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#reset-info {
+		position: relative;
+		top: 350px;
+		background-size: 20px;
+		left: 0%;
+		font-size: 20px;
+		border: none;
+		width: 80px;
+		height: 45px;
+		color: #008489;
+		background-color: white;
+	}
+	#left {
+		display: none;
+	}
+	.registration {
+		position: relative;
+		top: 350px;
+		width: 80px;
+		height: 45px;
+		background-color: #008489;
+		float: right;
+		color: white;
+		border-radius: 10px;
+		border: 1px solid;
+	}
+}
+/*모바일  */
+@media ( max-width : 480px) {
+	#wrap {
+		width: 480px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	/* #container{
+display: inline;
+    float: left;
+    width: 330px;
+ 
+} */
+	select {
+		width: 150%;
+		height: 80px;
+		font-size: 20px;
+	}
+	.registration {
+		position: relative;
+		top: 190px;
+		width: 80px;
+		height: 45px;
+		background-color: #008489;
+		float: right;
+		color: white;
+		border-radius: 10px;
+		border: 1px solid;
+		left: 100px;
+	}
+	h1 {
+		font-size: 24px;
+		width: 150%;
+	}
+	h2 {
+		width: 150%;
+	}
+	#left {
+		display: none;
+	}
+	#reset-info {
+		position: relative;
+		top: 200px;
+		background-size: 20px;
+		left: -20px;
+		border: none;
+	}
+	.modal-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 350px;
+		height: 298px;
+	}
+}

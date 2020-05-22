@@ -1,0 +1,752 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 90%;
+	max-width: 1100px;
+	display: inline;
+}
+
+#container {
+	display: inline;
+	float: left;
+	width: 60%;
+	height: 710px;
+	padding-bottom: 102px;
+	margin-left: 40px;
+}
+
+#left {
+	display: inline;
+	width: 30%;
+	height: 1250px;
+	background-color: #FAFAFA;
+	float: right;
+}
+
+header img {
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+h5 {
+	display: inline;
+	margin-left: 30px;
+}
+/*진행바  */
+progress {
+	width: 100%;
+	-webkit-appearance: none;
+	border: 1px solid;
+	border-radius: 100px;
+	background: white;
+}
+
+progress::-webkit-progress-bar-value {
+	-webkit-appearance: none;
+	background: orangered;
+}
+
+progress {
+	color: lightblue;
+}
+
+progress::-webkit-progress-value {
+	background: white;
+}
+
+progress::-moz-progress-bar {
+	background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+	background: #008489;
+	border-radius: 100px;
+	/*   transition: width 0.5s;
+   -webkit-transition: width 0.5s; */
+}
+
+progress::-webkit-progress-bar {
+	background: white;
+}
+/*왼쪽 숙박 표시하는 그림  */
+.avatar {
+	float: left;
+	border-radius: 50%;
+	height: 60px;
+	margin-left: 5px;
+}
+
+.progress-container {
+	float: left;
+	width: 200px;
+	height: 60px;
+	position: relative;
+	background-color: #D9F6F0;
+	margin-top: 30px;
+	border-radius: 50px;
+}
+
+.center {
+	text-align: center !important
+}
+
+
+#minimum-date-increase-quantity {
+	border: none;
+	width: 15%;
+	height: 49px;
+	cursor: pointer;
+	position: relative;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #DCE0E0;
+	float: right;
+}
+
+input[type="number"] {
+	width: 10%;
+}
+/*기존의 넘버타입 카운트안보이게  */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* 이전 다음 버튼 */
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-top: 80px;
+    font-size: 20px;
+}
+
+/* 이전 버튼 */
+#prevBtn {
+	padding: 5px;
+}
+
+#prevBtn:visited {
+	color: #008489;
+}
+
+/* 다음 버튼 */
+#nextBtn {
+    text-decoration: none;
+    width: 75px;
+    background: #008489;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#maximum-date-increase-quantity {
+	border: none;
+	width: 15%;
+	height: 49px;
+	cursor: pointer;
+	position: relative;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #DCE0E0;
+	float: right;
+}
+
+#minimum-date-decrease-quantity {
+	border: none;
+	width: 15%;
+	height: 49px;
+	cursor: pointer;
+	position: relative;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #dce0e0;
+	float: right;
+}
+
+#maximum-date-decrease-quantity {
+	border: none;
+	width: 15%;
+	height: 49px;
+	cursor: pointer;
+	position: relative;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #dce0e0;
+	float: right;
+}
+/* PC , 테블릿 가로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) { /*스타일입력*/
+}
+
+/* 테블릿 세로 (해상도 768px ~ 1023px)*/
+@media all and (min-width:768px) and (max-width:1023px) {
+	#minimum {
+		width: 66.6667%;
+		border: 1px solid #dce0e0;
+		height: 48px;
+	} /*스타일입력*/
+}
+
+/* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
+@media all and (min-width:480px) and (max-width:767px) {
+	#minimum {
+		width: 66.6667%;
+		border: 1px solid #dce0e0;
+		height: 48px;
+	}
+}
+
+/* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
+@media all and (max-width:479px) { /*스타일입력*/
+}
+/* 
+@media ( min-width : 1924px) {
+	#minimum {
+		width: 30%;
+		border: 1px solid #dce0e0;
+		height: 48px;
+	}
+#minimum-date-increase-quantity {
+    border: none;
+    width: 15%;
+    height: 49px;
+    cursor: pointer;
+    position: relative;
+   
+    top: -px;
+    color: #767676;
+    background-color: white;
+    border-left: 1px solid #DCE0E0;
+    border-bottom: 1px solid #DCE0E0;
+    border-right: 1px solid #DCE0E0;
+}
+#minimum-date-decrease-quantity {
+    border: none;
+    width: 15%;
+    height: 49px;
+    cursor: pointer;
+    position: relative;
+    color: #767676;
+    background-color: white;
+    border-left: 1px solid #DCE0E0;
+    border-bottom: 1px solid #DCE0E0;
+    border-right: 1px solid #dce0e0;
+    top: px;
+    left: 29.8%;
+}
+
+} */
+/* @media ( min-width : 1549px) {
+	#minimum {
+		width: 30%;
+		border: 1px solid #dce0e0;
+		height: 48px;
+	}
+#minimum-date-increase-quantity {
+    border: none;
+    width: 15%;
+    height: 49px;
+    cursor: pointer;
+    position: relative;
+   
+    top: -49px;
+    color: #767676;
+    background-color: white;
+    border-left: 1px solid #DCE0E0;
+    border-bottom: 1px solid #DCE0E0;
+    border-right: 1px solid #DCE0E0;
+    left: 79%;
+}
+#minimum-date-decrease-quantity {
+    border: none;
+    width: 15%;
+    height: 49px;
+    cursor: pointer;
+    position: relative;
+    color: #767676;
+    background-color: white;
+    border-left: 1px solid #DCE0E0;
+    border-bottom: 1px solid #DCE0E0;
+    border-right: 1px solid #dce0e0;
+    top: px;
+    left: 29.8%;
+}
+
+} */
+@media ( max-width : 1440px) {
+	#minimum {
+		width: 30%;
+		border: 1px solid #dce0e0;
+		height: 48px;
+	}
+	#maximum {
+		width: 30%;
+		border: 1px solid #dce0e0;
+		height: 48px;
+	}
+	#minimum-date-increase-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #DCE0E0;
+		float: right;
+	}
+	#maximum-date-increase-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #DCE0E0;
+		float: right;
+	}
+	#minimum-date-decrease-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		float: right;
+	}
+	#maximum-date-decrease-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		float: right;
+	}
+}
+
+@media ( max-width : 1237px) {
+	#minimum-date-decrease-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		float: right;
+	}
+}
+
+@media ( max-width : 897px) {
+	#minimum-date-increase-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #DCE0E0;
+		float: right;
+	}
+}
+/* input[type="number"] {
+	border: 0;
+	padding: 4px 15px;
+	width: 13px;
+	height: 25px;
+	margin-left: 20px;
+	vertical-align: bottom;
+	top: 5px;
+	position: relative;
+} */
+/*최대,최소 조절  */
+#minimum {
+	border: 1px solid #dce0e0;
+	width: 320px;
+	height: 48px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+}
+
+#maximum {
+	border: 1px solid #dce0e0;
+	width: 320px;
+	height: 48px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+}
+
+.min {
+	position: relative;
+	left: -130px;
+	font-size: 12px;
+}
+
+.max {
+	position: relative;
+	left: -60px;
+	font-size: 12px;
+} 
+
+/* 증가 감소 버튼 버튼  */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* #maximum-date-increase-quantity {
+	border: none;
+	width: 20%;
+	height: 49px;
+	cursor: pointer;
+	position: relative;
+	left: 61%;
+	top: -49px;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #DCE0E0;
+}
+ */
+/* #minimum-date-increase-quantity {
+	border: none;
+	width: %;
+	height: 49px;
+	cursor: pointer;
+	position: relative;
+	left: 3%;
+	top: -px;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #DCE0E0;
+}
+
+#maximum-date-decrease-quantity {
+	border: none;
+	width: 20%;
+	height: 49px;
+	cursor: pointer;
+	position: relative;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #dce0e0;
+	top: -33px;
+	left: 19%;
+	
+} */
+
+/* #minimum-date-decrease-quantity {
+	border: none;
+	width: 5%;
+	height: 49px;
+	cursor: pointer;
+	position: absolute;
+	color: #767676;
+	background-color: white;
+	border-left: 1px solid #DCE0E0;
+	border-bottom: 1px solid #DCE0E0;
+	border-right: 1px solid #dce0e0;
+	top: px;
+	left: 23.5%;
+}  */
+.text-info {
+	color: #767676;
+	font-size: 19px;
+	vertical-align: middle;
+}
+
+.minimum-date {
+	border: 0;
+	padding: 4px 15px;
+	width: 13px;
+	height: 25px;
+	margin-left: 20px;
+	vertical-align: bottom;
+	top: 7px;
+	position: relative;
+}
+
+.maximum-date {
+	border: 0;
+	padding: 4px 15px;
+	width: 13px;
+	height: 25px;
+	margin-left: 20px;
+	vertical-align: bottom;
+	/* top: -8px; */
+	top: 7px;
+	position: relative;
+}
+
+#minium-warning {
+	display: none;
+	margin-top: 15px;
+	height: 92px;
+	padding: 10px 20px;
+	color: #484848;
+}
+
+
+
+
+/*태블릿버전  */
+@media ( max-width : 768px) {
+	#wrap {
+		width: 768px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#left {
+		display: none;
+	}
+	.previous-photo {
+		position: relative;
+		top: 330px;
+		background: url(../img/previousArrow.png) no-repeat;
+		background-size: 20px;
+	}
+	/* 	#maximum-date-increase-quantity {
+		border: none;
+		width: 58px;
+		height: 49px;
+		cursor: pointer;
+		position: absolute;
+		left: 265px;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #DCE0E0;
+	}
+	 */
+	#minimum-date-decrease-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		float: right;
+		/* top: -32px; */
+		top: -0px;
+	}
+	#maximum {
+		border: 1px solid #dce0e0;
+		width: 320px;
+		height: 48px;
+		border-radius: 4px;
+		margin-bottom: 20px;
+	}
+	#maximum-date-decrease-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		float: right;
+		/* top: -32px; */
+		top: -0px;
+	}
+	#maximum-date-increase-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		float: right;
+		/* top: -32px; */
+		top: -0px;
+	}
+	#minimum-date-increase-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		/* left: 265px; */
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #DCE0E0;
+	}
+	input[type="button"] {
+		position: relative;
+		top: 310px;
+		width: 80px;
+		height: 45px;
+		background-color: #008489;
+		float: right;
+		margin-right: -200px;
+		color: white;
+		border-radius: 10px;
+		border: 1px solid;
+	}
+	.previous-link {
+		position: relative;
+		top: 347px;
+		background: url(../img/previousArrow.png) no-repeat;
+		background-size: 20px;
+		left: -30px;
+	}
+	#minimum {
+		border: 1px solid #dce0e0;
+		width: 320px;
+		height: 48px;
+		border-radius: 4px;
+		margin-bottom: 20px;
+	}
+}
+
+@media ( max-width : 480px) {
+	#wrap {
+		width: 480px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#left {
+		display: none;
+	}
+	input[type="button"] {
+		position: relative;
+		top: 310px;
+		width: 80px;
+		height: 45px;
+		background-color: #008489;
+		float: right;
+		margin-right: 20px;
+		color: white;
+		border-radius: 10px;
+		border: 1px solid;
+		left: 50px;
+	}
+	.previous-hostingStatus {
+		position: relative;
+		top: 330px;
+		background: url(../img/previousArrow.png) no-repeat;
+		background-size: 20px;
+		left: -50px;
+	}
+	#minimum, #maximum {
+		border: 1px solid #dce0e0;
+		width: 320px;
+		height: 48px;
+		border-radius: 4px;
+		margin-bottom: 20px;
+	}
+	#minimum-date-increase-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		/* left: 245px; */
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #DCE0E0;
+		float: left;
+		left: 90%;
+	}
+	#minimum-date-decrease-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		/* top: -32px; */
+		top: -0px;
+		left: -10%;
+	}
+	#maximum-date-increase-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		/* left: 245px; */
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #DCE0E0;
+		float: left;
+		left: 90%;
+	}
+	#maximum-date-decrease-quantity {
+		border: none;
+		width: 15%;
+		height: 49px;
+		cursor: pointer;
+		position: relative;
+		color: #767676;
+		background-color: white;
+		border-left: 1px solid #DCE0E0;
+		border-bottom: 1px solid #DCE0E0;
+		border-right: 1px solid #dce0e0;
+		/* top: -32px; */
+		top: -0px;
+		left: -10%;
+	}
+}

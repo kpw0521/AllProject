@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+#wrap {
+	position: relative;
+	left: 20%;
+}
+
+form {
+	padding: 20px;
+}
+/*진행바  */
+progress {
+	width: 100%;
+	-webkit-appearance: none;
+	border: 1px solid;
+	border-radius: 100px;
+	background: white;
+}
+
+progress::-webkit-progress-bar-value {
+	-webkit-appearance: none;
+	background: orangered;
+}
+
+progress {
+	color: lightblue;
+}
+
+progress::-webkit-progress-value {
+	background: white;
+}
+
+progress::-moz-progress-bar {
+	background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+	background: #008489;
+	border-radius: 100px;
+}
+
+progress::-webkit-progress-bar {
+	background: white;
+}
+
+.imgs-wrap {
+width: 900px;
+    height: 500px;
+    border: 5px solid;
+    border-style: dashed;
+    border-color: #008489;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+input[type="file"] {
+	/* 파일 필드 숨기기 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+
+
+}
+.upload-photo label{
+background: #E51E51;
+color: white;
+position: absolute;
+top: 280px;
+left:400px;
+width: 200px;
+height: 50px;
+font-size: 25px;
+text-align: center;
+vertical-align:text-top;
+}
+
+ i.fa.fa-camera{
+	    position: absolute;
+    top: 285px;
+    left: 300px;
+    z-index: 4;
+} 
+label.sub-upload{
+	border-style:dotted;
+	border-color:#008489;
+	width: 130px;
+	height: 150px;
+	background-image: url("../img/photoPlus.png");
+	background-repeat: no-repeat;
+}
+input[type="submit"] {
+    background-color: #008489;
+    border-color: #008489;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 20%;
+    position: relative;
+    left: 800px;
+}
+.selProductFile:hover{
+border:1px solid black;
+}
+/*태블릿  */
+@media (max-width: 768px){
+	#wrap{
+	width:768px;
+	left:0;
+}
+.imgs-wrap {
+    width: 600px;
+    height: 500px;
+    border: 5px solid;
+    border-style: dashed;
+    border-color: #008489;
+    display: flex;
+}
+input[type="submit"] {
+    background-color: #008489;
+    border-color: #008489;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 20%;
+    position: relative;
+    left: 500px;
+}
+.upload-photo label {
+    background: #E51E51;
+    color: white;
+    position: absolute;
+    top: 280px;
+    left: 200px;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    vertical-align: text-top;
+}
+ i.fa.fa-camera{
+	  position: absolute;
+    left: 200px;
+    top: 285px;
+  
+    z-index: 4;
+}
+} 
+@media (max-width: 480px){
+	#wrap{
+	width:480px;
+	left:0;
+	margin: 0;
+}
+.imgs-wrap {
+    width: 480PX;
+    height: 500px;
+    border: 5px solid;
+    border-style: dashed;
+    border-color: #008489;
+    display: flex;
+}
+input[type="submit"] {
+    background-color: #008489;
+    border-color: #008489;
+    color: white;
+    height: 50px;
+    width: 100px;
+    border-radius: 20%;
+    position: relative;
+    left: 500px;
+}
+.upload-photo label {
+    background: #E51E51;
+    color: white;
+    position: absolute;
+    top: 280px;
+    left: 200px;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    vertical-align: text-top;
+}
+ i.fa.fa-camera{
+	  position: absolute;
+    left: 200px;
+    top: 285px;
+  
+    z-index: 4;
+} 
+

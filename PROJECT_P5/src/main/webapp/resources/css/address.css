@@ -1,0 +1,286 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 90%;
+	max-width: 1100px;
+	display: inline;
+}
+
+#container {
+	display: inline;
+	float: left;
+	width: 60%;
+	height: 710px;
+	padding-bottom: 102px;
+	margin-left: 5%;
+	margin-top: 3%;
+}
+
+#left {
+	display: inline;
+	width: 30%;
+	height: 1250px;
+	background-color: #FAFAFA;
+	float: right;
+}
+
+header img {
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+.location {
+	margin: 30px 0;
+}
+
+h5 {
+	display: inline;
+	margin-left: 30px;
+}
+
+h2 {
+	color: #6E6E6E;
+	font-size: 20px;
+}
+
+.pin {
+	display: none;
+}
+/*주소 입력창  */
+#sample5_address {
+	width: 289px;
+	margin-left: 0px;
+	height: 35px;
+	margin-bottom: 10px;
+	border-top: 2px solid #EEEEEE;
+	border-left: 2px solid #EEEEEE;
+	padding: 0 20px;
+}
+
+#checkAddress {
+	width: 300px;
+	margin-left: 0px;
+	height: 40px;
+	margin-bottom: 10px;
+	border-top: 2px solid #EEEEEE;
+	border-left: 2px solid #EEEEEE;
+}
+
+button {
+	background-color: #ffffff;
+	color: black;
+	width: 60px;
+	height: 36px;
+	border-color: #ffffff;
+	border-radius: 5px;
+	position: absolute;
+}
+
+#addressInfo {
+	line-height: 1.5em;
+	vertical-align: middle;
+}
+
+.mapSetButtons button {
+	background-color: #008489;
+	color: white;
+	width: 300px;
+	min-width: max-content;
+	height: 36px;
+	border-color: #ffffff;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	font-weight: bold;
+	position: unset;
+	margin: 10px 0 20px;
+}
+
+#map-save-btn {
+	background: #ffbc58 !important;
+}
+
+
+#address2 {
+	margin-top: 10px;
+	border: 1px solid #A9A9A9;
+	height: 35px;
+	width: 200px;
+	padding: 0 20px;
+}
+/*진행바  */
+progress {
+	width: 100%;
+	-webkit-appearance: none;
+	border: 1px solid;
+	border-radius: 100px;
+	background: white;
+}
+
+progress::-webkit-progress-bar-value {
+	-webkit-appearance: none;
+	background: orangered;
+}
+
+progress {
+	color: lightblue;
+}
+
+progress::-webkit-progress-value {
+	background: white;
+}
+
+progress::-moz-progress-bar {
+	background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+	background: #008489;
+	border-radius: 100px;
+	/*   transition: width 0.5s;
+   -webkit-transition: width 0.5s; */
+}
+
+progress::-webkit-progress-bar {
+	background: white;
+}
+/*이전 다음  */
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 40%;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+/* 이전 버튼 */
+#prevBtn {
+	padding: 5px;
+}
+
+#prevBtn:visited {
+	color: #008489;
+}
+
+/* 다음 버튼 */
+#nextBtn {
+    text-decoration: none;
+    width: 75px;
+    background: #008489;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media ( max-width : 768px) {
+	#wrap {
+		width: 768px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#left {
+		display: none;
+	}
+	a[href="./roomCount"] {
+		position: relative;
+		top: 350px;
+		background-size: 20px;
+		left: -0px;
+	}
+	/* #map-save-btn {
+    background-color: #ffffff;
+    color: black;
+    width: 60px;
+    height: 36px;
+    border-color: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    top: 320px;
+    z-index: 10;
+}	
+#map-set-btn{
+
+    background-color: #ffffff;
+    color: black;
+    width: 60px;
+    height: 36px;
+    border-color: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    top: 300px;
+    z-index: 10;
+
+} */
+}
+/* @media (max-width: 613px){
+		#wrap{
+	max-width:613px;
+	margin-left: 0px;
+	margin-right: 0px;
+
+}
+a[href="./roomType"] {
+    position: relative;
+    top: 170px;
+    background-size: 20px;
+    left: -280px;
+    left: -50%;
+    color: #008489;
+    font-size: 20px;
+}
+} */
+/*모바일  */
+@media ( max-width : 480px) {
+	#wrap {
+		width: 480px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#sample5_address {
+		width: 50%;
+		height: 50px;
+		margin-left: 0px;
+	}
+	input[type="submit"] {
+		margin-top: 50px;
+		position: relative;
+		left: 180px;
+	}
+	#checkAddress {
+		width: 70%;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	#left {
+		display: none;
+	}
+	a[href="./roomCount"] {
+		position: relative;
+		top: 50px;
+		color: #008489;
+		background-size: 20px;
+		font-size: 20px;
+	}
+	a[onclick="check()"] {
+		position: relative;
+		top: 30px;
+		width: 80px;
+		height: 45px;
+		background-color: #008489;
+		float: right;
+		color: white;
+		border-radius: 10px;
+		border: 1px solid;
+		right: 5%;
+	}
+}
+
+.registration, .modification {
+	display: none;
+}

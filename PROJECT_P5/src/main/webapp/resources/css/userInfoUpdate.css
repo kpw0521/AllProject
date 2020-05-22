@@ -1,0 +1,379 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+button, input[type=text] {
+	outline: none;
+}
+
+/* 회원정보 페이지 컨테이너*/
+.user-info-update-container {
+	border: 1px solid;
+	height: 1200px;
+	margin: 50px 0;
+}
+
+/* 회원정보 페이지 타이틀 css */
+.user-info-update-title {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	margin: 20px 0;
+}
+
+/*  사용자 프로필사진 확인 및 등록  con*/
+.user-info-update-profile-Photo {
+	margin: 40px auto;
+	text-align: center;
+}
+
+/* 사용자 프로필사진 태그안에 있는 노드  */
+.user-info-update-profile-Photo *{
+	display: block;
+	margin: 0 auto;
+}
+
+/* 사용자 프로필사진  노드 */
+#userInfoProfilePhoto {
+	border-radius: 50%;
+	width: 30%;
+	margin-bottom: 10px;
+	box-shadow: 0px 0px 5px black;	
+}
+
+/* 사용자 프로필 정보들 */
+.user-info-update-value-block {
+    width: 50%;
+    margin: 10px auto;
+}
+/* 사용자 프로필 정보 종류들 */
+.user-info-update-value-title {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 30px;
+}
+
+/* 사용자의 정보 값들 */
+.user-info-update-value {
+	font-size: 18px;
+	margin: 0px 0px 30px 30px;
+	position: relative;
+}
+
+/*  수정하기 버튼들 (전화번호 인증하기 버튼과 인증완료 포함)*/
+.user-info-update-value-btn {
+	position: absolute;
+	right: 20px;
+}
+/* 
+#authenticationResult,
+#mobileAuthenticationResult {
+    position: absolute;
+    left: 150px;
+
+} */
+
+#authenticationResult {
+/* 	left: 30%;
+    bottom: 4px; */
+}
+
+#mobileAuthenticationResult {
+    color: #ed2d55;
+    background: white;
+    box-sizing: border-box;
+    border: 1px solid #ed2d55;
+}
+
+/* 취소하기 버튼들 */
+.user-info-update-value-cancel{
+	position: absolute;
+	right:100px;
+	display: none;
+}
+
+/* 사용자의 정보 수정 input */
+.user-info-update-value-input {
+	font-size: 22px;
+	width: 100px;
+	border: 0px;
+	border-bottom: 2px solid;
+}
+
+/* 사용자의 정보 수정 disabled일 때 */
+
+.user-info-update-value-input:disabled {
+	background: white;
+    outline: none;
+    border: 0px;
+    color: black;
+    font-size: 20px;
+}
+
+/* 사용자의 생년월일과 전화번호는 width 100px에 담기지 않기 때문에 
+따로 빼서 적용 */
+#userInfoUpdateValuePhone,
+#userInfoUpdateValueBirthDate {
+	width: 200px;
+}
+
+#modalBtn {
+	position: absolute;
+    right: 33%;
+}
+
+/* 비밀번호 modal */
+.user-info-modal {
+   display: none;
+   position: fixed;
+   background-color: rgb(0, 0, 0, 0.9);
+   width: 100%;
+   height: 105%;
+   top: 0;
+   right: 0;
+   padding: auto;
+   top: 0;
+   z-index: 10;
+}
+
+/* modal container */
+/* #modalPopup {
+	display: block;
+   	width: 50%;
+   	height: 500px;
+   	margin: 15% auto;
+   	background: white;
+   	text-align: center;
+} */
+
+/* 닫기 버튼 */
+.close {
+	display: block;
+   	position: absolute;
+   	top: 0;
+   	right: 10px;
+   	cursor: pointer;
+   	font-size: 50px;
+   	font-style: bold;
+   	color: rgb(255, 255, 255);
+}
+
+.user-info-update-password-label {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+.user-info-update-password-container{
+	width: 70%;
+    margin: auto;
+}
+
+.user-info-update-password-block {
+	margin: 40px 0px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.user-info-update-password-title {
+	display: inline;
+	vertical-align: middle;
+	font-size: 90%;
+}
+
+.user-info-update-password-value {
+
+}
+
+/* blockModal에서 내용들  */
+#blockingImg {
+	position: relative;
+    top: 47%;
+    left: 47%;
+    width: 10%;
+    height: 40px;
+}
+
+#blockingModalCon p {
+	font-size: 30px;
+    text-align: center;
+}
+
+#blockingModalCon img {
+	padding: 37%;
+}
+
+.profilePhotoTitle {
+	background: #ed2d55;
+	color: white;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bolder;
+	width: 80%;
+	padding: 13px 0;
+	border-radius: 15px;
+	margin: 30px auto;
+}
+
+.profilePhoto {
+   width: 80%;
+   margin: 0 auto;
+}
+
+.profilePhoto td {
+   vertical-align: middle;
+   padding: 10px;
+}
+
+.profilePhotolist {
+	border: 1px #bbb dotted;
+	padding-left: 30px;
+	text-align: left;
+	max-width: max-content;
+	border-radius: 10px;
+	padding: 20px;
+	vertical-align: middle;
+	font-size: 85%;
+    color: #bbb;
+    line-height: 1.5em;
+}
+
+.inputProfilePhoto {
+   width: 65px;
+   height: 65px;
+   border-radius: 5px;
+   border: 2px dotted;
+   border-color: #bbb;
+   object-fit: cover;
+   object-position: center;
+   margin: 3px auto;
+   opacity: 0.5;
+   transition: 0.1s;
+   object-fit: cover;
+   object-position: center;
+   box-sizing: border-box;
+}
+
+.inputProfilePhoto:hover, .now, .select {
+   opacity: 1;
+}
+
+.nowProfilePhoto {
+   width: 150px;
+   height: 150px;
+   border-radius: 50px;
+   margin: 10px auto 20px;
+   border: 7px inset #ed2d55 !important;
+   object-fit: cover;
+   object-position: center;
+}
+
+.select {
+   border: 5px #bbb double;
+   /* border-color: #ed2d55; */
+}
+
+.photoButton {
+   display: inline-grid;
+   position: absolute;
+}
+
+.photoButton button:hover {
+   opacity: 0.8;
+}
+
+.photoUpload {
+   background: #ed2d55;
+   width: 200px;
+   padding: 10px 0;
+   border-radius: 10px;
+   color: white; 
+   font-size: 15px;
+   font-weight: bolder;
+}
+
+ .photoButton button {
+   width: 30px;
+    height: 30px;
+    position: relative;
+    background: none;
+    border: none;
+    left: 120px;
+    top: -165px;
+    color: #ed2d55;
+    opacity: 0.7;
+}
+
+.photoButton button:hover {
+   opacity: 1;
+}
+
+.photoUploadButton {
+	text-align: center;	
+	margin: 0 0 50px;
+}
+
+.profilePhoto table {
+	margin: 0 auto;
+}
+
+.btnTheme {
+	border: none; 
+    background: #ed2d55;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    width: 15%;
+    min-width: max-content;
+    max-width: 100px;
+}
+
+.userUpdateContent {
+	margin: 20px auto;
+}
+
+.user-info-update-password-input {
+	margin: 10px;
+	width: 60%;
+	height: 25px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 1px;
+}
+
+.modalBtnTheme {
+	border: none;
+	background: #ed2d55;
+	color: white;
+	border-radius: 5px;
+	width: 100%;
+	height: 32px;
+	margin: 10px 0;
+	font-size: 100%;
+}
+
+/* 비밀번호변경 modal에서 유효성 검사 text */
+.user-info-update-password-error {
+	display: block;
+	font-size: 12px;
+	margin: 5px;
+	height: 5px;
+}
+
+.modalWrap input[type="password"] {
+	min-width: max-content !important;
+	margin-right: 0 !important;
+}
+
+
+
+/* 회원정보 수정 유효성 검사 text */
+.user-info-name-error {
+	font-size: 14px;
+	margin-top: 5px;
+}

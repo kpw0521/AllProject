@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clover.p5.host.mapper.HostMapper">
+	
+	
+	
+	
+	
+	<!-- 호스팅 목록 검색 -->
+	<select id="selectHostingList" resultType="HostingDTO">
+		SELECT host.id AS hostId,
+				host_photo.path AS coverPhotoPath,
+				host.name AS hostName,
+    			room_type.name AS roomTypeName
+		FROM host LEFT JOIN host_photo ON host.id = host_photo.host_id
+										AND host_photo.sort_order = 1
+        				JOIN room_type ON host.room_type_id = room_type.id
+        WHERE host.member_id = #{memberId} AND host.creation_date IS NULL
+        ORDER BY host.id DESC
+	</select>
+	
+	<!-- 완료 호스트 목록 검색 -->
+	<select id="selectHostList" resultType="HostDTO">
+		SELECT host.id AS id,
+				host_photo.path AS coverPhotoPath,
+				host_type.name AS hostTypeName,
+				room_type.name AS roomTypeName,
+				capacity,
+				room_count,
+				bed_count,
+				bathroom_count,
+				address,
+				host.name AS name,
+				creation_date,
+				modification_date
+		FROM host LEFT JOIN host_photo ON host.id = host_photo.host_id
+										AND host_photo.sort_order = 1
+						JOIN host_type ON host.host_type_id = host_type.id
+						JOIN room_type ON host.room_type_id = room_type.id
+		WHERE host.member_id = #{memberId} AND host.creation_date IS NOT NULL
+		ORDER BY host.id DESC
+	</select>
+	
+	<!-- 호스트 삭제 -->
+	<delete id="deleteHost">
+		DELETE
+		FROM host
+		WHERE id = #{hostId}
+	</delete>
+	
+	
+	<!-- 호스트 등록 1단계 완료 -->
+	<insert id="insertHost" parameterType="NewHostDTO">
+		INSERT INTO host
+		VALUES
+		(
+			SEQ_host_id.nextval,
+			#{memberId},
+			
+			#{hostTypeId},
+			#{roomTypeId},
+			
+			#{capacity},
+			#{roomCount},
+			#{bedCount},
+			#{bathroomCount},
+			
+			#{address},
+			#{latitude},
+			#{longitude},
+			
+			#{isTv},
+			#{isWifi},
+			#{isAirConditioner},
+			#{isAirPurifier},
+			#{isHairDryer},
+			#{isIron},
+			#{isKitchen},
+			#{isWashingMachine},
+			#{isElevator},
+			#{isParkingLot},
+			
+			'', <!-- 숙소 설명 -->
+			'', <!-- 기타 사항 -->
+			'', <!-- 숙소 이름 -->
+			
+			1, <!-- 최소 숙박일 -->
+			1, <!-- 최대 숙박일 -->
+			0, <!-- 1박 가격 -->
+			
+			NULL, <!-- 작성일 -->
+			NULL  <!-- 수정일 -->
+								)
+	</insert>
+	
+	<!-- 새로 등록한 호스트의 ID 검색 -->
+	<select id="selectNewHostId" resultType="int">
+		SELECT MAX(id)
+		FROM host
+		WHERE member_id = #{memberId}
+	</select>
+	
+	<!-- 호스트 정보 검색 -->
+	<select id="selectHost" resultType="Host">
+		SELECT *
+		FROM host
+		WHERE id = #{hostId}
+	</select>
+	
+	
+	<!-- 호스트 수정 1단계 -->
+	<update id="updateRoomType" parameterType="Host">
+		UPDATE host
+		SET host_type_id = #{hostTypeId},
+			room_type_id = #{roomTypeId}
+		WHERE id = #{hostId}
+	</update>
+	<update id="updateRoomCount" parameterType="Host">
+		UPDATE host
+		SET capacity = #{capacity},
+			room_count = #{roomCount},
+			bed_count = #{bedCount},
+			bathroom_count = #{bathroomCount}
+		WHERE id = #{hostId}
+	</update>
+	<update id="updateAddress" parameterType="Host">
+		UPDATE host
+		SET address = #{address},
+			latitude = #{latitude},
+			longitude = #{longitude}
+		WHERE id = #{hostId}
+	</update>
+	<update id="updateFacilities" parameterType="Host">
+		UPDATE host
+		SET is_tv = #{isTv},
+			is_wifi = #{isWifi},
+			is_air_conditioner = #{isAirConditioner},
+			is_air_purifier = #{isAirPurifier},
+			is_hair_dryer = #{isHairDryer},
+			is_iron = #{isIron},
+			
+			is_kitchen = #{isKitchen},
+			is_washing_machine = #{isWashingMachine},
+			is_elevator = #{isElevator},
+			is_parking_lot = #{isParkingLot}
+		WHERE id = #{hostId}
+	</update>
+	
+	
+	<!-- 호스트 등록, 수정 2단계 -->
+	<update id="updateDescription" parameterType="Host">
+		UPDATE host
+		SET description = #{description},
+			description_etc = #{descriptionEtc}
+		WHERE id = #{hostId}
+	</update>
+	<update id="updateName" parameterType="Host">
+		UPDATE host
+		SET name = #{name}
+		WHERE id = #{hostId}
+	</update>
+	
+	
+	<!-- 호스트 등록, 수정 3단계 -->
+	<update id="updateStayDate" parameterType="Host">
+		UPDATE host
+		SET minimum_stay = #{minimumStay},
+			maximum_stay = #{maximumStay}
+		WHERE id = #{hostId}
+	</update>
+	<update id="updatePrice" parameterType="Host">
+		UPDATE host
+		SET price = #{price}
+		WHERE id = #{hostId}
+	</update>
+	
+	
+	<!-- 호스트 등록 3단계 완료 -->
+	<update id="updateCreationDate">
+		UPDATE host
+		SET price = #{price},
+			creation_date = TO_DATE(#{creationDate}, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE id = #{hostId}
+	</update>
+	
+	
+	<!-- 등록 완료 호스트인지 확인 -->
+	<select id="selectCreationDate" resultType="String">
+		SELECT creation_date
+		FROM host
+		WHERE id = #{hostId}
+	</select>
+	<!-- 호스트 주요 내용 수정 -->
+	<update id="updateModificationDate">
+		UPDATE host
+		SET modification_date = TO_DATE(#{modificationDate}, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE id = #{hostId}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 호스트에 등록된 사진 목록을 검색 -->
+	<select id="selectHostPhotoList" resultType="HostPhoto">
+		SELECT *
+		FROM host_photo
+		WHERE host_id = #{hostId}
+		ORDER BY sort_order
+	</select>
+	
+	<!-- 호스트(숙소) 사진이 있나 확인 -->
+	<select id="selectHostPhotoCount" resultType="int">
+		SELECT COUNT(*)
+		FROM host_photo
+		WHERE host_id = #{hostId}
+	</select>
+	<!-- 사진이 있다면 사진의 index 최댓값 구함 -->
+	<select id="selectHostPhotoSortOrderMax" resultType="int">
+		SELECT max(sort_order)
+		FROM host_photo
+		WHERE host_id = #{hostId}
+	</select>
+	
+	<!-- 호스트 사진 저장 -->
+	<insert id="insertHostPhoto">
+		<foreach collection="list" item="photo"
+		 separator=" " open="INSERT ALL " close="SELECT * FROM DUAL">
+			INTO host_photo
+			(
+				host_id,
+				original_name,
+				file_size,
+				path,
+				sort_order
+								)
+			VALUES
+			(	
+				#{photo.hostId},
+				#{photo.originalName},
+				#{photo.fileSize},
+				#{photo.path},
+				#{photo.sortOrder}
+									)
+		</foreach>
+	</insert>
+	
+	
+	<!-- 사진의 경로를 구함 -->
+	<select id="selectHostPhotoPath" resultType="String">
+		SELECT path
+		FROM host_photo
+		WHERE id = #{hostPhotoId}
+	</select>
+	<!-- 호스트에 등록된 사진을 삭제 -->
+	<delete id="deleteHostPhoto"> <!-- 파라미터 타입은 안써줘도 되는가 -->
+		DELETE
+		FROM host_photo
+		WHERE id = #{hostPhotoId}
+	</delete>
+	<update id="updateCoverPhotoOrder">
+		UPDATE host_photo
+		SET sort_order = 1
+		WHERE host_id = #{hostId}
+				AND sort_order = (
+									SELECT MIN(sort_order)
+									FROM host_photo
+									WHERE host_id = #{hostId}
+																)
+	</update>
+	
+	<!-- 호스트 사진 정렬 순서 저장 -->
+	<update id="updateHostPhotoSort">
+		<foreach collection="array" item="photoId" index="index" 
+      		separator=";" open="DECLARE BEGIN" close="; END;" >
+		 UPDATE host_photo
+		 SET sort_order = #{index} + 1
+		 WHERE id = #{photoId}
+	  	</foreach>
+	</update>
+	
+	<!-- 대표 이미지 변경에 사용 -->
+	<update id="updateHostPhoto">
+		UPDATE host_photo
+		SET sort_order = #{sortOrder}
+		WHERE id = #{photoId}
+	</update>
+	
+	
+
+
+
+
+
+
+
+
+
+	<!-- 예약 차단일 목록 검색 -->
+	<select id="selectBlockingList" resultType="Blocking">
+		SELECT id, host_id, TO_CHAR(check_in_date, 'YYYY.MM.DD') AS checkInDate, who
+		FROM blocking
+		WHERE host_id = #{hostId}
+	</select>
+	
+	<!-- 예약 차단일 설정 -->
+	<insert id="insertBlocking" parameterType="BlockingDTO">
+		INSERT INTO blocking
+		(
+			host_id,
+			check_in_date,
+			who
+							)
+		VALUES
+		(
+			#{hostId},
+			TO_DATE(#{date}, 'YYYY.MM.DD'),
+			'H'
+									)
+	</insert>
+	
+	<!-- 예약 차단일 설정 해제 -->
+	<delete id="deleteBlocking" parameterType="BlockingDTO">
+		DELETE
+		FROM blocking
+		WHERE host_id = #{hostId}
+			AND TO_CHAR(check_in_date, 'YYYY.MM.DD') = #{date}
+			AND who = 'H'
+	</delete>
+	
+	<!-- 전체(월) 예약 차단 -->
+	<insert id="insertBlockingMonth">
+		<!-- foreach문에서는 trigger로! .nextval이 안먹힌다 -->
+		<foreach collection="arrDate" item="date"
+		 separator=" " open="INSERT ALL " close="SELECT * FROM DUAL">
+			INTO blocking
+			(	
+				host_id,
+				check_in_date,
+				who
+								)
+			VALUES
+			(	
+				#{hostId},
+				TO_DATE('${year}.${month}.${date}', 'YYYY.MM.DD'),
+				'H'
+										)
+		</foreach>
+	</insert>
+	
+	<!-- 전체(월) 예약 차단 해제 -->
+	<delete id="deleteBlockingMonth" parameterType="BlockingDTO">
+		DELETE
+		FROM blocking
+		WHERE host_id = #{hostId}
+			AND TO_CHAR(check_in_date, 'YYYY.MM') = '${year}.${month}'
+			AND who = 'H'
+	</delete>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- 호스트 접근 권한 확인 -->
+	<select id="selectIsIdentified" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM host
+		WHERE id = #{hostId} AND member_id = #{memberId}
+	</select>
+	
+	
+	
+
+
+
+</mapper>

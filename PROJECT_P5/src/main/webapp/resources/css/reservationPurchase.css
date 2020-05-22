@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+#wrap {
+	max-width: 1100px;
+	width: 100%;
+	margin: 50px auto;
+}
+
+#payment-window {
+	border: 1px solid #ed2d55;
+	border-radius: 15px;
+	width: 75%;
+	border: none;
+	margin: 0 auto;
+}
+
+.contents {
+	margin-top: 20px;
+}
+
+.titleSub {
+	vertical-align: middle;
+	margin: 10px;
+	font-size: 95%;
+}
+
+.contents img {
+	float: right;
+	width: 130px;
+	height: 130px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.priceNotice {
+	margin: 40px auto;
+	padding: 0 20px;
+}
+
+.date {
+	margin: 40px 0;
+	padding-left: 20px;
+}
+
+.price-calculation {
+	margin-top: 40px;
+	display: iline;
+	margin-bottom: 30px;
+}
+
+.price {
+	display: inline;
+}
+
+.price-info {
+	float: right;
+}
+
+#payment-window hr {
+	margin-left: 0px;
+	border: 3px solid #f7f7f7;
+}
+
+.totalPay {
+	margin: 35px 0;
+	font-size: 1.4em;
+}
+
+.total-text {
+	display: inline;
+}
+
+.total-price {
+	float: right;
+}
+
+.pay-text {
+	margin-top: 50px;
+	margin-bottom: 30px;
+	padding-left: 20px;
+}
+
+.paymentSelect {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 5% 30% 30% 30% 5%;
+}
+
+.paymentButton {
+    border: none;
+    min-width: max-content;
+    margin: 0 10px;
+    height: 35px;
+    font-size: 95%;
+    border-radius: 30px;
+    -webkit-text-stroke: thin;
+    opacity: 1;
+}
+
+.paymentButton:hover {
+	background: orange !important;
+	border: 5px solid orange;
+	border-bottom-style: outset;
+}
+
+.kakaoPay {
+	width: 4em;
+}
+
+#payment-window img {
+	vertical-align: middle;
+}
+
+#payment-window a {
+	float: right;
+	margin-right: 750px;
+}
+
+#refund-info {
+	margin-top: 40px;
+	margin-bottom: 5px;
+	border-left: 3px solid #FFAF0F;
+	padding: 10px 20px 10px;
+}
+
+.refund-title {
+	color: #222222;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.refund-text {
+	line-height: 1.5em;
+	font-size: 95%;
+}
+
+.refund-last {
+	font-size: 12px;
+	width: 95%;
+	margin: 5px auto;
+}
+
+#payment-window input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background-color: #E62556;
+    color: white;
+    border: none;
+    outline: none;
+    margin: 40px auto;
+    font-size: 100%;
+    border-radius: 10px; 
+}
+
+/* #payment-window i {
+	position: relative;
+	left: -390px;
+	color: white;
+	vertical-align: middle;
+} */
+/*태블릿버전  */
+@media ( max-width : 768px) {
+	#wrap {
+		
+	}
+}
+/*태블릿버전  */
+@media ( max-width {
+	@media ( max-width : 480px) {
+		#wrap {
+			
+		}
+	}
+}

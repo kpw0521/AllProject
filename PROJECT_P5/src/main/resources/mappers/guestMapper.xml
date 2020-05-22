@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clover.p5.guest.mapper.GuestMapper">
+	
+	<!-- postPage에 뿌려줄 host관련 정보(사진은 따로) -->
+	<select id="selectHost" parameterType="String" resultType="HostInfoDTO">
+
+		SELECT 
+		    m.last_name, m.first_name, rt.name AS rt_name, ht.name AS ht_name, h.* 
+		FROM 
+			host h
+				INNER JOIN 
+		        member m
+		        ON h.member_id = m.id
+		        
+		        INNER JOIN 
+		        room_type rt
+		        ON h.room_type_id = rt.id
+		        
+		        INNER JOIN 
+		        host_type ht
+		        ON h.host_type_id = ht.id
+		WHERE
+			h.id = #{id}	
+	
+	</select>
+	
+	<!-- 호스트 사진 출력 -->
+	<select id="selectHostPhotoList" parameterType="String" resultType="HostPhotoDTO">
+		
+		SELECT
+			*
+		FROM
+			host_photo
+		WHERE
+			host_id = #{hostId}
+		ORDER BY
+			sort_order ASC
+			
+		
+	</select>
+	
+	<!-- 대표 사진 -->
+	<select id="selectRepresentativePhoto" parameterType="String" resultType="HostPhotoDTO">
+		
+		SELECT
+			*
+		FROM
+			host_photo
+		WHERE
+			host_id = #{hostId}
+			AND
+				sort_order = 1
+			
+		
+	</select>
+	
+	
+	
+	<select id="selectBlocking" parameterType="String" resultType="Date">
+	
+		SELECT
+			check_in_date
+		FROM
+			blocking
+		WHERE
+			host_id = #{hostId}
+		ORDER BY
+			id
+	
+	</select>
+	
+	<select id="selectHostList" parameterType="SearchHostDTO" resultType="HostSemiInfoDTO">
+		<!--
+		CDATA 사용 이유!
+		https://epthffh.tistory.com/entry/Mybatis-%EC%97%90%EC%84%9C-CDATA-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+		-->
+		SELECT 
+		    h.id, h.member_id, h.name, h.description, h.description_etc, h.capacity, 
+		    h.bed_count, h.bathroom_count, h.room_count, h.address, h.latitude, h.longitude,
+		    rt.name AS rt_name, ht.name AS ht_name, hp.original_name , hp.path, 
+		    hp.sort_order, round(avg(r.rating),2) AS rate_avg, count(r.rating) AS review_count
+		FROM 
+		    host_photo hp
+		        INNER JOIN host h
+		        ON(hp.host_id = h.id)
+		        
+		        LEFT JOIN booking b
+		        ON(h.id = b.host_id)
+		        
+		        LEFT JOIN review r
+		        ON(b.id = r.booking_id)
+		            
+		        INNER JOIN member m
+		        ON(m.id = h.member_id)
+		
+		        INNER JOIN profile_photo pp
+		        ON(m.id = pp.member_id)
+		        
+		        INNER JOIN room_type rt
+		        ON h.room_type_id = rt.id
+		        
+		        INNER JOIN host_type ht
+		        ON h.host_type_id = ht.id
+		WHERE
+		    h.creation_date IS NOT NULL
+		    AND
+		        hp.sort_order = 1
+		    			AND
+				(h.latitude BETWEEN #{swLatitude} AND #{neLatitude})
+			AND
+				(h.longitude BETWEEN #{swLongitude} AND #{neLongitude})
+			<if test="guestCount != -1">
+			AND
+				h.capacity <![CDATA[>=]]> #{guestCount}
+			</if>
+			<if test="sStartDate != null and sEndDate != null">
+			AND 
+			    h.id NOT IN(        
+			        SELECT 
+			            DISTINCT h.id
+			        FROM 
+			            host h
+			                INNER JOIN 
+			                blocking b 
+			                ON h.id = b.host_id
+			        WHERE 
+			            (b.check_in_date BETWEEN TO_DATE(#{sStartDate},'YYYY.MM.DD') 
+			                AND
+			                    TO_DATE(#{sEndDate},'YYYY.MM.DD'))
+				)
+			</if>
+		        
+		GROUP BY
+		    h.id, h.member_id, h.name, h.description, h.description_etc, h.capacity, 
+		    h.bed_count, h.bathroom_count, h.room_count, h.address, h.latitude, h.longitude,
+		    rt.name, ht.name, hp.original_name , hp.path, hp.sort_order    
+		HAVING
+		    count(hp.id) != 0
+		    AND
+		    count(pp.id) != 0
+				
+
+		
+	
+	</select>
+	
+	<insert id="insertBooking" parameterType="BookingEntity">
+		
+		INSERT 
+		INTO
+			booking
+		VALUES(
+			SEQ_booking_id.nextval,
+			#{hostId},
+			#{memberId},
+			TO_DATE(#{checkInDate},'YYYY.MM.DD'),
+			TO_DATE(#{checkOutDate},'YYYY.MM.DD'),
+			#{guestCount},
+			#{payment},
+			TO_DATE(#{bookingDate},'YYYY.MM.DD HH24:MI:SS'),
+			NULL,
+			NULL		
+		)
+	
+	</insert>
+	
+	<!-- refund -->
+	<update id="updateBooking" parameterType="String">
+
+		UPDATE
+			booking
+		SET
+			cancellation_date = TO_DATE(#{cancellationDate},'YYYY.MM.DD HH24:MI:SS'),
+    		refund = #{refund}
+		WHERE
+			id = #{bookingId}
+
+	</update>
+
+
+	
+	<!-- foreach문에서는 trigger로! .nextval이 안먹힌다 -->
+	<!-- 예약 차단일 등록 -->
+	<insert id="insertBlocking">
+		<foreach collection="arrBlockingDate" item="blockingDate"
+		 separator=" " open="INSERT ALL " close="SELECT * FROM DUAL">
+			INTO blocking
+			(	
+				host_id,
+				check_in_date,
+				who
+			)
+			VALUES
+			(	
+				#{hostId},
+				TO_DATE(#{blockingDate}, 'YYYY.MM.DD'),
+				'G'
+			)
+		</foreach>
+	</insert>
+	
+	<delete id="deleteBlocking">
+		DELETE 
+		
+		FROM
+		    blocking 
+		<where>
+			host_id = #{hostId}
+			AND 
+		    <foreach collection="dates" item="checkInDate" separator="OR">
+		        check_in_date = TO_DATE(#{checkInDate},'YYYY.MM.DD')
+		    </foreach>
+		    
+	    </where>
+	</delete>
+	
+	
+	<select id="selectBooking" parameterType="String" resultType="BookingEntity">
+		
+		SELECT
+			*
+		FROM
+			booking
+		WHERE
+			member_id = #{memberId}
+		ORDER BY
+			booking_date DESC
+	
+	</select>
+	
+	<insert id="insertReview" >
+		
+		INSERT 
+		INTO review
+		VALUES(
+			#{bookingId},
+			#{rate},
+			#{content},
+			TO_DATE(#{creationDate},'YYYY.MM.DD HH24:MI:SS')
+		)
+		
+	</insert>
+	
+	<select id="selectProfilePhoto" parameterType="Integer" resultType="ProfilePhoto">
+	
+		SELECT
+		    *
+		FROM
+		    profile_photo
+		WHERE
+		    is_profile = 'Y'
+		    AND
+		        member_id = #{memberId}
+	
+	</select>
+	
+	<select id="selectReviewCheck" parameterType="String" resultType="String">
+	
+		SELECT
+		    r.creation_date
+		FROM review r
+		    RIGHT JOIN booking b
+		    ON b.id = r.booking_id
+		WHERE 
+		    b.member_id = #{memberId}
+		ORDER BY
+		    b.booking_date DESC
+	
+	</select>
+	
+	<select id="selectReviewList" parameterType="String" resultType="ReviewInfoDTO">
+		
+		SELECT
+		    r.booking_id, r.rating, r.content, TO_CHAR(r.creation_date,'YYYY.MM.DD') AS creation_date,
+		    pp.path, pp.original_name, m.first_name, m.last_name
+		FROM
+		    review r
+		    INNER JOIN 
+		    booking b
+		    ON r.booking_id = b.id
+		    
+		    INNER JOIN 
+		    member m
+		    ON m.id = b.member_id
+		        
+		    INNER JOIN 
+		    profile_photo pp
+		    ON b.member_id = pp.member_id
+		WHERE
+		    b.host_id = #{hostId}
+		    AND pp.is_profile = 'Y'
+		ORDER BY
+			r.creation_date
+			
+		
+	</select>
+	
+	<select id="selectCheckBooking" parameterType="String" resultType="Integer">
+	
+		SELECT 
+		    count(b.id) AS bCount
+		FROM
+		    booking b
+		WHERE
+		    b.host_id = #{hostId}
+		    AND b.member_id = #{memberId}
+		    AND b.check_in_date = TO_DATE(#{checkInDate},'YYYY.MM.DD')
+		    AND b.check_out_date = TO_DATE(#{checkOutDate},'YYYY.MM.DD')
+	
+	</select>
+	
+	
+	<select id="selectCheckBlocking" parameterType="String" resultType="Integer">
+	
+		SELECT 
+		    count(bk.id) AS bkCount 
+		FROM
+		    blocking bk
+		WHERE
+		    bk.check_in_date BETWEEN TO_DATE(#{checkInDate},'YYYY.MM.DD') AND TO_DATE(#{checkOutDate},'YYYY.MM.DD') 
+		    AND bk.host_id = #{hostId}	
+	
+	
+	</select>
+	
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+	

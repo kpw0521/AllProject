@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+footer {
+
+}
+
+/* 호스트와 게스트 이용 방법  */
+.footer-description {
+	/* 	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around; */
+	vertical-align: middle;
+	box-sizing: border-box;
+	border: 2px solid #E51E51;
+	padding: 20px;
+	display: grid;
+	/*지도 안보이기  */
+	background:white;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+/* 호스트 게스트 별도 div  */
+.footer-user {
+	flex-direction: column;
+	padding-left: 50px;
+}
+
+/* ~입력방법 title */
+.footer-user h3 {
+	text-align: center;
+	padding: 10px;
+}
+
+/* ul li에 적용되는 부분 */
+.user-description * {
+	list-style: none;
+	padding: 10px;
+}
+
+#hostDescription {
+	border-right: 1px solid #bbb;
+}
+
+.footer-sitemap {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	text-align: center;
+	background: #bbb;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	font-size: 16px;
+	vertical-align: middle;
+	padding: 30px;
+}
+
+.footer-sitemap * {
+	padding: 20px;
+	border-bottom: 1px solid white;
+	margin: 0px 100px;
+}
+
+.sitemap-title {
+	font-size: 20px;
+	font-weight: bold;
+	/* 	border-bottom: 1px solid white;*/
+	margin: 0px 50px !important;
+}
+
+/* 이용약관등과 같은 정보  */
+.footer-copyright {
+	padding: 30px 0px;
+	/*지도 가리기  */
+	background: white; 
+}
+
+.footer-copyright * {
+	display: inline;
+}
+
+@media ( max-width :786px) {
+	.footer-description {
+		grid-template-columns: none;
+		grid-template-rows: repeat(2, 1fr);
+		font-size: 13px;
+	}
+	
+	.footer-user {
+		padding :0px 45px;
+	}
+	
+	#hostDescription {
+		border-right: none;
+		border-bottom: 1px solid #bbb;
+	}
+	
+	.footer-sitemap {
+		font-size: 13px;
+		padding: 0px;
+	}
+	
+	.footer-sitemap * {
+	    padding: 0px;
+	    margin: 10px !important;
+	}
+	
+	.sitemap-title {
+	    font-size: 18px;
+	    font-weight: bold;
+	    margin: 10px !important;
+	}
+
+	.footer-copyright {
+		padding: 10px 0px;
+	}
+	.footer-copyright * {
+   		font-size: 13px;
+	}
+}

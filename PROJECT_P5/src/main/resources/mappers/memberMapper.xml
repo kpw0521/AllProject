@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clover.p5.member.mapper.MemberMapper">
+	
+	
+	
+	<!-- 이메일 중복 확인 -->
+	<select id="selectEmailCount" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+		FROM member
+		WHERE email = #{email}	
+	</select>
+	
+	
+	
+	<!-- 회원가입 때만 사용 -->
+	<insert id="insertMember" parameterType="NewMemberDTO">
+		INSERT INTO member
+		VALUES
+		(
+			SEQ_member_id.nextval,
+			#{email},
+			#{password},
+			#{firstName},
+			#{lastName},
+			#{birthDate},
+			#{mobilePhone},
+			'N',
+			TO_DATE(#{registrationDate}, 'YYYY-MM-DD HH24:MI:SS')
+																	)
+	</insert>
+	
+	
+	
+	
+	
+	
+	<!-- 로그인에만 사용 -->
+	<select id="selectMemberByEmail" parameterType="String" resultType="Member">
+		SELECT member.*, profile_photo.path AS profile_photo_path
+		FROM member LEFT JOIN profile_photo ON member.id = profile_photo.member_id
+												AND profile_photo.is_profile = 'Y'
+		WHERE email = #{email}
+	</select>
+	
+	<!-- 회원 테이블에서 이메일에 해당하는 ID를 검색 -->
+	<select id="selectMemberId" parameterType="String" resultType="int">
+		SELECT id
+		FROM member
+		WHERE email = #{email}
+	</select>
+	<!-- 임시 로그인, session 갱신 등에 사용 -->
+	<select id="selectMember" resultType="Member">
+		SELECT member.*, profile_photo.path AS profile_photo_path
+		FROM member LEFT JOIN profile_photo ON member.id = profile_photo.member_id
+												AND profile_photo.is_profile = 'Y'
+		WHERE member.id = #{memberId}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 이름, 성 변경 -->
+	<update id="updateName">
+		UPDATE member
+		SET first_name = #{firstName}, last_name = #{lastName}
+		WHERE id = #{memberId}
+	</update>
+	<!-- 생년월일 변경 -->
+	<update id="updateBirthDate">
+		UPDATE member
+		SET birth_date = #{birthDate}
+		WHERE id = #{memberId}
+	</update>
+	<!-- 휴대전화 번호 변경 -->
+	<update id="updateMobilePhone">
+		UPDATE member
+		SET mobile_phone = #{mobilePhone}, mobile_authentication = 'N'
+		WHERE id = #{memberId}
+	</update>
+	<!-- 비밀번호 변경 -->
+	<update id="updatePassword">
+		UPDATE member
+		SET password = #{newPassword}
+		WHERE id = #{memberId}
+	</update>
+
+
+
+
+
+
+
+
+
+	<!-- 휴대전화 인증 여부를 검색 -->
+	<select id="selectMobileAuthentication" resultType="String">
+		SELECT mobile_authentication
+		FROM member
+		WHERE id = #{memberId}
+	</select>
+	
+	<!-- 휴대전화 인증 결과를 DB에 적용 -->
+	<update id="updateMobileAuthentication">
+		UPDATE member
+		SET mobile_phone = #{mobilePhone}, mobile_authentication = 'Y'
+		WHERE id = #{memberId}
+	</update>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- 회원 프로필 사진 목록을 검색 -->
+	<select id="selectProfilePhotoList" resultType="ProfilePhoto">
+		SELECT *
+		FROM profile_photo
+		WHERE member_id = #{memberId}
+		ORDER BY id
+	</select>
+	
+		<!-- 회원 프로필 사진 유무를 검색 -->
+	<select id="selectProfilePhotoCount" resultType="int">
+		SELECT COUNT(*)
+		FROM profile_photo
+		WHERE member_id = #{memberId}
+	</select>
+	
+		<!-- 회원 프로필 사진을 등록  -->
+	<insert id="insertProfilePhoto" parameterType="ProfilePhotoVO">
+		INSERT INTO profile_photo
+		VALUES
+		(
+			SEQ_profile_photo_id.nextval,
+			#{memberId},
+			#{originalName},
+			#{fileSize},
+			#{path},
+			'Y'
+							)
+	</insert>
+	
+	
+	<!-- 사진의 경로를 구함 -->
+	<select id="selectProfilePhotoPath" resultType="String">
+		SELECT path
+		FROM profile_photo
+		WHERE id = #{profilePhotoId}
+	</select>
+		<!-- 회원 프로필 사진 삭제 -->
+	<delete id="deleteProfilePhoto">
+		DELETE
+		FROM profile_photo
+		WHERE id = #{profilePhotoId}
+	</delete>
+	
+		<!-- 프로필 삭제 이후 빈자리 채우기 -->
+	<update id="updateAutoProfile">
+		UPDATE profile_photo
+		SET is_profile = 'Y'
+		WHERE id = (
+						SELECT MIN(id)
+						FROM profile_photo
+						WHERE member_id = #{memberId}
+														)
+	</update>
+	
+		<!-- 프로필 사진 해제 -->
+	<update id="updateIsProfileN">
+		UPDATE profile_photo
+		SET is_profile = 'N'
+		WHERE is_profile = 'Y' AND member_id = #{memberId} 
+	</update>
+
+		<!-- 프로필 사진으로 적용 -->
+	<update id="updateIsProfileY">
+		UPDATE profile_photo
+		SET is_profile = 'Y'
+		WHERE id = #{profilePhotoId}
+	</update>
+
+
+
+
+
+
+	<delete id="deleteRememberMe">
+		DELETE
+		FROM remember_me
+		WHERE member_id = #{memberId} 		
+	</delete>
+	<insert id="insertRememberMe">
+		INSERT INTO remember_me
+		VALUES
+		(
+			#{cookieValue},
+			#{memberId},
+			SYSDATE + 7	
+							)
+	</insert>
+	<select id="selectRememberMeCount" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+		FROM remember_me
+		WHERE cookie_value = #{cookieValue}
+			AND cookie_limit > SYSDATE
+	</select>
+	<select id="selectRememberMeMemberId" parameterType="String" resultType="int">
+		SELECT member_id
+		FROM remember_me
+		WHERE cookie_value = #{cookieValue}
+			AND cookie_limit > SYSDATE
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

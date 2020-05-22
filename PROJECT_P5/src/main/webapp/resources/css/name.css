@@ -1,0 +1,276 @@
+@charset "UTF-8";
+#wrap {
+	width: 90%;
+	max-width: 1100px;
+	display: inline;
+}
+
+#container{
+display: inline;
+    float: left;
+    width: 60%;
+    height: 710px;
+  padding-bottom: 102px;
+  margin-left: 40px;
+}
+#left{
+	display:inline;
+	width:30%;
+	height: 1250px;
+	background-color: #FAFAFA;
+	float: right;
+}
+.fifty {
+
+		top: 63px;
+    position: absolute;
+    width: 30%;
+    height: 16px;
+    float: left;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: repeating-linear-gradient(135deg, rgb(77, 223, 212), rgb(77, 223, 212) 2px, rgb(153, 237, 230) 2px, rgb(153, 237, 230) 4px);
+}
+
+header img {
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+h5 {
+	display: inline;
+	margin-left: 30px;
+}
+
+h2 {
+	color: #6E6E6E;
+	font-size: 20px;
+}
+#info{
+border:1px solid #DCE0E0;
+width:70%;
+height: 121px;
+padding: 10px 20px;
+margin: 80px 40px;
+
+}
+i.fa.fa-lightbulb-o.fa-3x{
+	color: #008489;
+}
+
+/*진행바  */
+progress {
+	width: 100%;
+	-webkit-appearance: none;
+	border: 1px solid;
+	border-radius: 100px;
+	background: white;
+}
+
+progress::-webkit-progress-bar-value {
+	-webkit-appearance: none;
+	background: orangered;
+}
+
+progress {
+	color: lightblue;
+}
+
+progress::-webkit-progress-value {
+	background: white;
+}
+
+progress::-moz-progress-bar {
+	background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+	background: #008489;
+	border-radius: 100px;
+}
+
+progress::-webkit-progress-bar {
+	background: white;
+}
+/*텍스트창  */
+input[type="text"]{
+	    width: 90%;
+    height: 45px;
+    border-top: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+}
+/*남는 글자수 */
+#descriptionWord{
+	color: #008489;
+    position: relative;
+font-weight:bold;
+   left: -5%;
+    font-size: 12px;
+}
+.warning{
+color:red;
+}
+/* 이전다음 */
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+/* 이전 버튼 */
+#prevBtn {
+	padding: 5px;
+}
+
+#prevBtn:visited {
+	color: #008489;
+}
+
+/* 다음 버튼 */
+#nextBtn {
+    text-decoration: none;
+    width: 75px;
+    background: #008489;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* .registration {
+    position: relative;
+    top: 345px;
+    width: 80px;
+    height: 45px;
+    background-color: #008489;
+    float: right;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid;
+ 
+} */
+/*테블릿  */
+@media ( max-width : 768px) {
+#wrap {
+		width: 768px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
+	#left {
+		display: none;
+	}
+	.previous-link {
+    position: relative;
+    top: 275px;
+    background: url(../img/previousArrow.png) no-repeat;
+    background-size: 20px;
+    left: -30px;
+}
+.registration {
+    position: relative;
+    top: 265px;
+    width: 80px;
+    height: 45px;
+    background-color: #008489;
+    float: right;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid;
+ 
+}
+#descriptionWord {
+   color: #008489;
+    position: relative;
+  
+    font-size: 12px;
+}
+input[type="text"] {
+    width: 90%;
+    height: 45px;
+    
+    border-top: outset;
+    border-left: 1px solid #A9A9A9;
+}
+}
+
+@media ( max-width : 480px) {
+
+	#wrap {
+		width: 480px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+#left {
+		display: none;
+	}
+
+	h3{
+	font-size: 16px;
+	
+	}
+	h1{
+	font-size:24px;
+	}
+	textarea{
+	height:216px;
+	width: 380px;
+	}
+	
+
+#descriptionWord {
+    color: #008489;
+    position: relative;
+    top: 0px;
+    left: -30px;
+    font-size: 12px;
+}
+input[type="text"] {
+    width: 90%;
+    height: 45px;
+    
+    border-top: outset;
+    border-left: 1px solid #A9A9A9;
+}
+input[type="button"] {
+    position: relative;
+    top: 310px;
+    width: 80px;
+    height: 45px;
+    background-color: #008489;
+    float: right;
+    margin-right: 20px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid;
+    left: 50px;
+}
+.registration {
+    position: relative;
+    top: 265px;
+    width: 80px;
+    height: 45px;
+    background-color: #008489;
+    float: right;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid;
+  
+}
+.fifty {
+    top: 89px;
+    position: absolute;
+    width: 30%;
+    height: 16px;
+    float: left;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: repeating-linear-gradient(135deg, rgb(77, 223, 212), rgb(77, 223, 212) 2px, rgb(153, 237, 230) 2px, rgb(153, 237, 230) 4px);
+}
+}

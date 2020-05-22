@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+#wrap {
+	max-width: 1100px;
+	width: 100%;
+	margin: 50px auto;
+}
+
+#reservationFinish {
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+
+#reservationFinish h1 {
+	text-align: left;
+	padding-left: 20px;
+}
+
+#reservationFinish hr {
+	margin-left: 0px;
+	border: 3px solid #f7f7f7;
+	margin: 30px 0;
+}
+
+.description {
+	line-height: 1.5em;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bolder;
+	margin: 20px 0;
+}
+
+.message {
+	font-size: 100%;
+	margin: 50px 0 50px;
+}
+
+.move {
+	
+}
+
+.finishImg img {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	object-position: center;
+	float: left;
+}
+
+.revervFinishButton {
+	border: none;
+	background: #ed2d55;
+	color: white;
+	border-radius: 10px;
+	width: 90%;
+	height: 40px;
+	margin: 30px 0;
+	font-size: 100%;
+}

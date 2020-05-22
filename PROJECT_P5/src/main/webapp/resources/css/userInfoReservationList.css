@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+#wrap {
+	max-width: 1100px;
+	width: 100%;
+	margin: 30px auto 50px;
+}
+
+.reservation-list-main-title {
+	font-size: 28px;
+	margin-bottom: 20px;
+	font-weight: bolder;
+	padding-left: 5%;
+}
+
+/* 예약 컨테이너 */
+.reservation-list-container {
+	width: 100%;
+	overflow-y: auto;
+}
+
+/* 예약리스트 블럭 (게시물 하나) */
+.resercation-list-block {
+	display: grid;
+	grid-template-columns: 20% 50% 15% 15%;
+	width: 90%;
+	border: 1px solid #bbb;
+	border-radius: 5px;
+	margin: 5px auto;
+	box-sizing: border-box;
+	text-align: center;
+	vertical-align: middle;
+	padding: 25px 0;
+}
+
+.resercation-list-block:hover {
+	background: #eee;
+}
+
+/* 예약번호 */
+.reservation-list-num {
+	margin: auto;
+}
+
+.reservation-list-img {
+	margin: auto;
+}
+
+/* 예약한 게시물에 대한 이미지 */
+.reservation-list-img>img {
+	width: 80%;
+}
+
+/* 예약한 게시물에 대한 정보 */
+.reservaion-list-value {
+	vertical-align: middle;
+    text-align: left;
+    margin: auto 0;
+    font-size: 95%;
+}
+
+/* 예약한 게시물 제목 */
+.reservation-list-title {
+	font-size: 22px;
+	font-weight: bold;
+	overflow: hidden;
+}
+
+/* 편의사항 */
+.reservation-list-guestCount {
+	
+}
+
+/* 예약한 날짜 */
+.reservation-list-date {
+	
+}
+
+/* 결제일 */
+.reservation-list-buy-date {
+	
+}
+
+.reservation-list-buy-cancle {
+	display: none;
+}
+
+/* 총 가격 */
+.reservation-list-price {
+	
+}
+
+/* 예약한 게시물 환불 */
+.reservation-list-refund {
+	margin: auto;
+    font-size: 90%;
+    line-height: 1.3em;
+    -webkit-text-stroke: thin;
+}
+
+/* 예약한 게시물 환불 버튼 */
+.reservation-list-refund-btn {
+    border: none;
+    background: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: max-content;
+}
+
+.reservation-list-refund-btn.reply {
+	background: #ed2d55;
+}
+
+.dateText1 {
+	font-size: 90%;
+	margin: 7px 0;
+}
+
+.dateText2, {
+	font-size: 85% !important;
+}
+
+.refundNotice {
+	font-size: 95%;
+	color: #777;
+	margin-bottom: 30px;
+	padding-left: 6%;
+}
+
+

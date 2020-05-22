@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 100%;
+	max-width: 1100px;
+	margin: auto;
+	vertical-align: middle;
+}
+
+.host-list-room-table {
+	width: 100%;
+	margin-top: 20px;
+	border-collapse: collapse;
+	padding: 10px 0px 10px 0px;
+}
+
+.table-tr {
+	border-bottom: 1px solid #bbb;
+	height: 80px;
+	cursor: pointer;
+}
+
+.table-tr:hover {
+	color:#E51E51;
+}
+
+td {
+	text-align: center;
+}
+
+.table-tr-th {
+	height: 50px;
+	border-bottom: 1px solid #bbb;
+}
+
+.host-number {
+	width: 10%;
+}
+
+.host-room {
+	width: 30%;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.room {
+	width: 10%;
+}
+
+.bed-room {
+	width: 5%;
+}
+
+.bed-count {
+	width: 5%
+}
+
+.address {
+	width: 20%
+}
+
+.btnSet {
+	width: 10%;
+	cursor: auto;
+}
+
+.host-room-div {
+	border-bottom: none;
+	text-align: left;
+}
+
+.host-img {
+	width: 80px;
+	height: 40px;
+	object-fit: cover;
+	object-position: center;
+}
+
+#hostListModifyBtn {
+	width: 40px;
+    margin-bottom: 5px;
+}
+
+span {
+	vertical-align: super;
+}
+
+.hosting-list-btn-group {
+	background: #E51E51;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    margin: 0px 9px;
+    cursor: pointer;
+}
+
+
+
+@media ( max-width :768px) and (min-width:450px) {
+	
+	.table-tr-th {
+		height: 40px;
+	}
+	
+	.host-number {
+		width: 10%;
+	}
+	.host-room {
+		width: 30%;
+		text-align: left;
+		vertical-align: middle;
+	}
+	.room {
+		width: 10%;
+	}
+	.bed-room {
+		width: 10%;
+	}
+	.bed-count {
+		width: 10%
+	}
+	.address {
+		width: 20%
+	}
+	.btnSet {
+		width: 10%;
+	}
+	.host-room-div {
+		border-bottom: none;
+		text-align: left;
+	}
+	.host-img {
+		width: 80px;
+		height: 40px;
+		object-fit: cover;
+		object-position: center;
+	}
+	span {
+		vertical-align: super;
+	}
+}

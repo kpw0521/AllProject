@@ -1,0 +1,226 @@
+@charset "UTF-8";
+
+#wrap {
+	width: 90%;
+	max-width: 1100px;
+	display: inline;
+}
+
+#container {
+	display: inline;
+	float: left;
+	width: 60%;
+	height: 710px;
+	padding-bottom: 102px;
+	margin-left: 40px;
+}
+
+#left {
+	display: inline;
+	width: 30%;
+	height: 1250px;
+	background-color: #FAFAFA;
+	float: right;
+}
+
+header img {
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+h5 {
+	display: inline;
+	margin-left: 30px;
+}
+
+h2 {
+	color: #6E6E6E;
+	font-size: 20px;
+}
+/*진행바  */
+progress {
+	width: 100%;
+	-webkit-appearance: none;
+	border: 1px solid;
+	border-radius: 100px;
+	background: white;
+}
+
+progress::-webkit-progress-bar-value {
+	-webkit-appearance: none;
+	background: orangered;
+}
+
+progress {
+	color: lightblue;
+}
+
+progress::-webkit-progress-value {
+	background: white;
+}
+
+progress::-moz-progress-bar {
+	background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+	background: #008489;
+	border-radius: 100px;
+}
+
+progress::-webkit-progress-bar {
+	background: white;
+}
+/*체크박스*/
+input[type="checkbox"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0
+}
+
+input[type="checkbox"]+label:before {
+	float: right;
+	content: '';
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	line-height: 20px;
+	margin: -2px 8px 0 0;
+	text-align: center;
+	vertical-align: middle;
+	background: #fafafa;
+	border: 1px solid #008489;
+	border-radius: 100%;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px
+		rgba(0, 0, 0, 0.05);
+}
+
+hr {
+	margin-top: 30px;
+	border-color: #EBEBEB;
+	size: 2px;
+}
+
+input[type="checkbox"]+label:active:before, input[type="checkbox"]:checked+label:active:before
+	{
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px
+		rgba(0, 0, 0, 0.01);
+}
+
+input[type="checkbox"]:checked+label:before {
+	background: url("../img/check.png") no-repeat;
+	text-shadow: 1px 1px white;
+	border: none;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px
+		rgba(0, 0, 0, 0.05);
+	animation: check 0.3s;
+}
+
+.available-facilities {
+	margin-top: 70px;
+}
+
+
+
+.text {
+	color: #767676;
+}
+/*  */
+/* input[type="checkbox"]:checked:after {
+  animation: check 0.3s;
+} */
+/*체크박스 애니메이션  */
+@keyframes check { 
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	40%{
+		transform : scale(1);
+		box-shadow :0 0 0 10px rgba(0,0,0,0);
+	}
+
+	100%{
+		transform : scale(0.95);
+		box-shadow :0 0 0 0 rgba(0,0,0,0);
+	}
+}
+
+
+/*이전 다음  */
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+/* 이전 버튼 */
+#prevBtn {
+	padding: 5px;
+}
+
+#prevBtn:visited {
+	color: #008489;
+}
+
+/* 다음 버튼 */
+#nextBtn {
+    text-decoration: none;
+    width: 75px;
+    background: #008489;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/*태블릿  */
+@media ( max-width : 768px) {
+	#wrap {
+		width: 768px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#left {
+		display: none;
+	}
+	input[type="submit"] {
+		background-color: #008489;
+		border-color: #008489;
+		color: white;
+		height: 50px;
+		width: 100px;
+		border-radius: 20%;
+		position: relative;
+		left: 600px;
+	}
+}
+/*모바일  */
+@media ( max-width : 480px) {
+	h1 {
+		font-size: 28px;
+	}
+	#wrap {
+		width: 480px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#left {
+		display: none;
+	}
+	input[type="submit"] {
+		left: 300px;
+	}
+}

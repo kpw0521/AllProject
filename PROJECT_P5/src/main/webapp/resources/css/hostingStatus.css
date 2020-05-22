@@ -1,0 +1,77 @@
+@charset "UTF-8";
+#wrap {
+	width: 100%;
+	max-width: 1100px;
+	margin: auto;
+}
+
+/* 숙소 상태를 총괄 */
+.hosting-status {
+	display: grid;
+	grid-template-columns: 60% 40%;
+	margin: 30px 0px;
+	height: 1000px;
+}
+
+/* 숙소상태페이지 타이틀 */
+.hosting-status-title {
+	font-size: 30px;
+	margin: 30px 0px;
+}
+
+/* 숙소상태 단계별 block */
+.hosting-status-block {
+	margin: 10px;
+	padding: 20px;
+	border-bottom: 0.5px solid #bbb;
+}
+
+/* 단계별 표시 */
+.hosting-status-step {
+	font-size: 15px;
+	font-weight: bold;
+	color: #aaa;
+	margin: 5px;
+}
+
+.hosting-status-description {
+	margin-bottom: 10px;
+}
+
+/* 숙소 등록시 보여줄 멘트 */
+.hosting-status-register {
+	font-size: 30px;
+    margin: 20px 0px;
+}
+
+/* 숙소수정관련 이미지 */
+.hosting-status-img {
+	background: #bbb;
+}
+
+/* 숙소 변경,계속 버튼 */
+.modify-btn, .continue-btn {
+	text-decoration: none;
+	color: #E51E51;
+}
+
+.modify-btn:visited, .continue-btn:visited {
+	color: #E51E51;
+}
+
+/* 변경버튼에 마우스를 올렸을 때 */
+.modify-btn:hover {
+	text-decoration: underline;
+}
+
+/* 계속 버튼 */
+.continue-btn {
+	width: 60px;
+	height: 36px;
+	background: #E51E51;
+	color: white !important;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 15px;
+	border-radius: 5px;
+}
